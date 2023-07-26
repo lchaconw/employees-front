@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <input type="text" class="form-control" [(ngModel)]="searchInput" placeholder="Enter Employee ID">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" (click)="searchEmployees()">Search</button>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped table-dark" aria-describedby="employees_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <th>Profile Image</th>
+            <th>Annual Salary</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let employee of filteredEmployees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.employee_name }}</td>
+            <td>{{ employee.employee_salary | currency: 'USD': 'symbol' }}</td>
+            <td>{{ employee.employee_age }}</td>
+            <td><img [src]="employee.profile_image" alt="Profile Image" width="50" height="50"></td>
+            <td>{{ employee.annualSalary | currency: 'USD': 'symbol' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
